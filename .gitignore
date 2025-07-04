@@ -1,0 +1,33 @@
+# Godot-specific
+.import/
+.export/
+.export_presets.cfg
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Godot editor data
+.godot/
+
+# User-specific
+*.tmp
+*.bak
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Python virtual environments (if any)
+venv/
+ENV/
+env/
+
+# Godot Mono (C#) specific
+.mono/
+data_*/
+
+# Build artifacts

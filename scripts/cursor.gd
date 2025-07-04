@@ -2,7 +2,7 @@ extends Node2D
 
 enum TileType { None, Grass, Dirt, Water, Sand }
 
-@export var dual_grid_tilemap: TileMap
+@export var dual_grid_tilemap: TileMapLayer
 
 @onready var cursor = $"."
 

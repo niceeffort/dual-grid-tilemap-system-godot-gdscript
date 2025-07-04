@@ -12,13 +12,12 @@ config_version=5
 
 config/name="Dual Grid System GDScript"
 run/main_scene="res://scenes/world.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [filesystem]
@@ -41,4 +40,3 @@ right_click={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="mobile"
