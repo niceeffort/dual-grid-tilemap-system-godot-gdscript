@@ -1,0 +1,17 @@
+# Godot-specific
+.import/
+.export/
+.godot/
+*.import
+
+# OS-specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Godot export templates (optional)
+export_presets.cfg
+
+# User/editor-specific
+*.tmp
+*.log

@@ -1,11 +1,11 @@
 @tool
-extends TileMap
+extends TileMapLayer
 
 const NEIGHBOURS = [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]
 
 enum TileType { None, Grass, Dirt, Water, Sand }
 
-@export var offset_tilemap: TileMap
+@export var offset_tilemap: TileMapLayer
 @export var atlas_source_id: int = 0
 @export var terrain_atlas_coords: Dictionary = {
 	TileType.Grass: [Vector2i(2, 1), Vector2i(0, 7), Vector2i(6, 5)],
@@ -112,7 +112,7 @@ func _ready() -> void:
 	for key in neighbours_to_atlas_coord.keys():
 		#print(key)
 		pass
-	for coord in get_used_cells(0):
+	for coord in get_used_cells():
 		#print("Initial tile at ", coord)
 		set_display_tile(Vector2i(coord))
 
@@ -125,19 +125,19 @@ func _process(_delta):
 
 func update_all_tiles() -> void:
 	# Go through all the used cells and set their display tiles
-	for coord in get_used_cells(0):
+	for coord in get_used_cells():
 		set_display_tile(Vector2i(coord))
 
 
 func set_tile(coords: Vector2i, atlas_coords: Vector2i) -> void:
-	set_cell(0, coords, atlas_source_id, atlas_coords)
+	set_cell(coords, atlas_source_id, atlas_coords)
 	set_display_tile(coords) # Update the OffsetTileMap immediately
 
 
 func set_display_tile(pos: Vector2i) -> void:
 	for i in range(NEIGHBOURS.size()):
 		var new_pos = pos + NEIGHBOURS[i]
-		offset_tilemap.set_cell(0, new_pos, atlas_source_id, calculate_display_tile(new_pos))
+		offset_tilemap.set_cell(new_pos, atlas_source_id, calculate_display_tile(new_pos))
 
 
 func calculate_display_tile(coords: Vector2i) -> Vector2i:
@@ -184,7 +184,7 @@ func calculate_display_tile(coords: Vector2i) -> Vector2i:
 
 
 func get_world_tile(coords: Vector2i) -> TileType:
-	var atlas_coord = get_cell_atlas_coords(0, coords)
+	var atlas_coord = get_cell_atlas_coords(coords)
 	
 	# Iterate through the dictionary to find which terrain type the atlas_coord belongs to
 	for terrain in terrain_atlas_coords.keys():
